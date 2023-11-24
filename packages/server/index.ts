@@ -19,7 +19,6 @@ async function startServer() {
   let vite: ViteDevServer | undefined;
   const distPath = path.dirname(require.resolve('client/dist/index.html'));
   const srcPath = path.dirname(require.resolve('client/index.html'));
-  // const srcPath = path.dirname(require.resolve('client'))
   const ssrClientPath = require.resolve('client/ssr-dist/client.cjs');
 
   if (isDev()) {
@@ -60,8 +59,7 @@ async function startServer() {
       if (!isDev()) {
         render = (await import(ssrClientPath)).render(url);
       } else {
-        render = (await vite!.ssrLoadModule(path.resolve(srcPath, 'ssr.tsx')))
-          .render;
+        render = (await vite!.ssrLoadModule(path.resolve(srcPath, 'ssr.tsx'))).render;
       }
 
       const appHtml = await render();

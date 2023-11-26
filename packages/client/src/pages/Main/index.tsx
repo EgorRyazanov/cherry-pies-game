@@ -5,7 +5,7 @@ import { Avatar } from '../../components/Avatar'
 import { ROUTES_NAMES } from '../../const/routeNames'
 import { getUserData } from '../../store/user/selectors'
 import s from './index.module.scss'
-import useNotification from '../../hook/useNotification'
+import notificationApi from '../../utils/notificationApi'
 
 type TMainPage = {
   logoutCallback: () => void
@@ -20,7 +20,7 @@ const MainPage = ({ logoutCallback }: TMainPage) => {
       body: 'This is Notification API',
       src: 'src/assets/tower-icon.png',
     }
-    useNotification(data)
+    notificationApi(data)
   }, [])
 
   return (

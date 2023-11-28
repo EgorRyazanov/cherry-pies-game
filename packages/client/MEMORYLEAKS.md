@@ -11,8 +11,8 @@
 1 контрольная точка (начало теста) - 6,9 МБ
 2 контрольная точка (конец теста) - 7,1 МБ
 
-![memory test start](./packages/client/src/assets/screenshot-A.png)
-![memory test end](./packages/client/src/assets/screenshot-B.png)
+![memory test start](/packages/client/src/assets/screenshot-A.png)
+![memory test end](/packages/client/src/assets/screenshot-B.png)
 
 ### Результаты анализа:
  

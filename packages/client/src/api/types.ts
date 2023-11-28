@@ -121,3 +121,27 @@ export type TLeaderBoardNewLeaderRequestData = {
   ratingFieldName: string
   teamName: string
 }
+
+export type TOAuthRequestData = {
+  code: string
+  redirect_uri: string
+}
+
+export type TOAuthResponseData = {
+  data: {
+    service_id: string
+  }
+}
+
+export interface ServerError {
+  data: {
+    reason: string
+  }
+}
+
+export const isServerError = (object: any): object is ServerError => {
+  if (object instanceof Object && 'data' in object) {
+    return 'reason' in object.data
+  }
+  return false
+}

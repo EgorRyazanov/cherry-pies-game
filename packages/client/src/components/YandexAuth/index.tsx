@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import { authApi } from '../../api/authApi'
 import { generateYandexOAuthUrl } from '../../utils/helpers'
-import { isServerError } from '../../api/types'
 import styles from './index.module.scss'
 
 export const YandexAuth = () => {
@@ -15,12 +14,8 @@ export const YandexAuth = () => {
         window.location.href = generateYandexOAuthUrl(response.data.service_id)
       }
     } catch (error: unknown) {
-      if (isServerError(error)) {
-        setError(error.data.reason)
-      }
-
       if (error instanceof Error) {
-        console.error(error.message)
+        setError(error.message)
       }
 
       throw error

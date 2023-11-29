@@ -1,3 +1,5 @@
+import { isAxiosError } from 'axios'
+
 export type TRequestStatus = {
   reason: string
 }
@@ -140,7 +142,11 @@ export interface ServerError {
 }
 
 export const isServerError = (object: any): object is ServerError => {
-  if (object instanceof Object && 'data' in object) {
+  if (
+    isAxiosError(object) &&
+    'data' in object &&
+    object.data instanceof Object
+  ) {
     return 'reason' in object.data
   }
   return false

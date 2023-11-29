@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 import { authApi } from '../../api/authApi'
 import { generateYandexOAuthUrl } from '../../utils/helpers'
-import styles from './index.module.scss'
 import { isServerError } from '../../api/types'
+import styles from './index.module.scss'
 
 export const YandexAuth = () => {
   const [error, setError] = useState('')

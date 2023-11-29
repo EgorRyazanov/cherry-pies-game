@@ -16,7 +16,6 @@ export const withAuthCheck = <P extends Record<string, unknown>>(
     const dispatch = useAppDispatch()
     const { pathname } = useLocation()
     const [searchParams] = useSearchParams()
-    // console.log(searchParams.get('code'));
     const { isAuth, isDataFetched } = useAppSelector(getUserData)
 
     useEffect(() => {

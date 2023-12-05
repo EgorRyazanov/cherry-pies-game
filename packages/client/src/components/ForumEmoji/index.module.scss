@@ -1,0 +1,49 @@
+@import '../../style/variables.scss';
+@import '../../style/fonts.scss';
+
+.reactionsContainer {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.emojiWrapper {
+  display: flex;
+  border-radius: 16px;
+  border: 1px solid;
+  gap: 5px;
+}
+
+.emojiSpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.emojiCount {
+  margin-right: 5px;
+}
+
+.pickerContainer {
+  position: relative;
+}
+
+.pickerImage {
+  cursor: pointer;
+  width: 25px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+
+.emojiPicker {
+  position: absolute;
+  top: 100%;
+}
+

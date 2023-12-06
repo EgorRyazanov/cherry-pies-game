@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { ErrorMessage } from '../ErrorMessage'
-import { TUserSlice } from '../../store/user/state'
-import { UserProfileForm } from '../UserProfileForm'
 import { TUserData, TUserPassword } from '../../api/types'
+
+import { ErrorMessage } from '../ErrorMessage'
+import { LocationCity } from '../LocationCity'
 import { PasswordChangeForm } from '../PasswordChangeForm'
+import { TUserSlice } from '../../store/user/state'
 import { USER_PROFILE_ERRORS_TEXT } from '../../const/userProfile'
 import { UserProfileButtonBlock } from '../UserProfileButtonBlock'
+import { UserProfileForm } from '../UserProfileForm'
 import style from './index.module.scss'
 
 type TUserProfileFormTemplate = {
@@ -25,7 +27,7 @@ export const UserProfileFormTemplate = ({
   const [hideButtons, setHideButtons] = useState(false)
   const [isPasswordEdit, setIsPasswordEdit] = useState(false)
   const [error, setError] = useState('')
-
+  const [editCity, setEditCity] = useState(false)
   const { isLoading, isError, user, errorMessage } = userData
   const { first_name, second_name } = user
 
@@ -69,36 +71,42 @@ export const UserProfileFormTemplate = ({
 
   return (
     <div className={style.profileWrapper}>
-      <div className={style.userNameWrapper}>
-        <span className={`${style.userNameText} ${style.font_18}`}>
-          {first_name}
-        </span>
-        <span className={`${style.userNameText} ${style.font_18}`}>
-          {second_name}
-        </span>
-      </div>
-      {error || isError ? (
-        <ErrorMessage
-          text={error || errorMessage}
-          className="error-message-margin"
-        />
-      ) : null}
-      {isPasswordEdit ? (
-        <PasswordChangeForm
-          isDisable={!isPasswordEdit}
-          onsubmit={changeUserPassword}
-          className={style.userProfileFormMargin}
-        />
-      ) : (
-        <UserProfileForm
-          userData={user}
-          isDisable={!isEdit}
-          onsubmit={changeUserData}
-          className={style.userProfileFormMargin}
-        />
+      {!editCity && (
+        <>
+          <div className={style.userNameWrapper}>
+            <span className={`${style.userNameText} ${style.font_18}`}>
+              {first_name}
+            </span>
+            <span className={`${style.userNameText} ${style.font_18}`}>
+              {second_name}
+            </span>
+          </div>
+          {error || isError ? (
+            <ErrorMessage
+              text={error || errorMessage}
+              className="error-message-margin"
+            />
+          ) : null}
+          {isPasswordEdit ? (
+            <PasswordChangeForm
+              isDisable={!isPasswordEdit}
+              onsubmit={changeUserPassword}
+              className={style.userProfileFormMargin}
+            />
+          ) : (
+            <UserProfileForm
+              userData={user}
+              isDisable={!isEdit}
+              onsubmit={changeUserData}
+              className={style.userProfileFormMargin}
+            />
+          )}
+        </>
       )}
-      {!hideButtons ? (
+      <LocationCity open={editCity} isEdit={() => setEditCity(false)} />
+      {!hideButtons && !editCity ? (
         <UserProfileButtonBlock
+          editCityChange={() => setEditCity(true)}
           logOut={logout}
           userDataChange={userDataEditToggle}
           passwordChange={passwordChangeToggle}

@@ -1,20 +1,28 @@
 import { Formik, Form } from 'formik'
 import { useState } from 'react'
-
-import { FormInput } from '../../../components/FormInput'
-import { MyErrorMessage } from '../../../components/MyErrorMessage'
+//
 import { TForumCreation } from '../types'
-import { FormSubmitButton } from '../../../components/FormSubmitButton'
-import { FormLinkButton } from '../../../components/FormAsLinkButton'
-import { ROUTES_NAMES } from '../../../const/routeNames'
 import { validate } from '../../../utils/validator'
+import { useAppDispatch } from '../../../hook/hook'
+import { ROUTES_NAMES } from '../../../const/routeNames'
+import { FormInput } from '../../../components/FormInput'
+import { createTopicThunk } from '../../../store/forum/dispatchers'
+import { MyErrorMessage } from '../../../components/MyErrorMessage'
+import { FormLinkButton } from '../../../components/FormAsLinkButton'
+import { FormSubmitButton } from '../../../components/FormSubmitButton'
+
 import styles from './index.module.scss'
 
 export const ForumCreation = () => {
+  const dispatch = useAppDispatch()
   const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (forumCreation: TForumCreation) => {
-    console.log(forumCreation)
+  const handleSubmit = (
+    forumCreation: TForumCreation,
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    dispatch(createTopicThunk(forumCreation))
+    resetForm()
   }
 
   const cleanFetchErrorHandler = () => {

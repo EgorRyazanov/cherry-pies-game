@@ -3,36 +3,62 @@ import styles from './index.module.scss'
 import Picker from '@emoji-mart/react'
 import data from '@emoji-mart/data'
 import smile from '../../assets/smiley-plus.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../hook/hook'
+import { getUserData } from '../../store/user/selectors'
+import { forumApi } from '../../api/forumApi'
+import { fetchReactions } from '../../store/forum/dispatchecrs'
+import { filterAndCountDublicate } from '../../utils/duplicate'
 
 type ForumEmojiProps = {
   comment: TComment
 }
 
 export const ForumEmoji = ({ comment }: ForumEmojiProps) => {
+  const dispatch = useAppDispatch()
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
-  const [reactions, setReactions] = useState<any>([])
+  const [reactions, setReactions] = useState<any>(comment.reactions)
+  const { user } = useAppSelector(getUserData)
 
   async function handleSelectEmoji(data: any) {
     setShowEmojiPicker(!showEmojiPicker)
-    setReactions([...reactions, data.unified])
-    console.log(comment)
-
-    //await apiForum.addReaction(Number(comment.id), data.unified, comment.user.id!);
+    setReactions([
+      ...reactions,
+      {
+        topic_id: comment.id,
+        emoji: data.unified,
+        user_id: user.id,
+      },
+    ])
+    await forumApi.addReaction(Number(comment.id), data.unified, user.id!)
+    dispatch(fetchReactions(Number(comment.id)))
   }
+  /* 
+  const handleOnClick = async (e) => {
+    console.log(String.fromCodePoint(parseInt(e.target.innerHTML, 16)));
+    
+    await forumApi.deleteReaction(Number(comment.id), e.unified, user.id!);
+    dispatch(fetchReactions(Number(comment.id)))
+  } */
+
+  const arr = filterAndCountDublicate(reactions)
 
   return (
     <div className={styles.reactions}>
       <div className={styles.reactionsContainer}>
-        {reactions &&
-          reactions.map((item: any, index: any) => (
-            <div className={styles.emojiWrapper} key={index}>
-              <span className={styles.emojiSpan}>
-                {String.fromCodePoint(parseInt(item, 16))}
-              </span>
-              {/* <span className={styles.emojiCount}>{comment.likesCount}</span> */}
-            </div>
-          ))}
+        {comment &&
+          arr.map((item: any, index: any) => {
+            return (
+              <div className={styles.emojiWrapper} key={index}>
+                <span className={styles.emojiSpan}>
+                  {String.fromCodePoint(parseInt(item.emoji, 16))}
+                </span>
+                {item.count > 1 ? (
+                  <span className={styles.emojiCount}>{item.count}</span>
+                ) : null}
+              </div>
+            )
+          })}
       </div>
       <div className={styles.pickerContainer}>
         <img

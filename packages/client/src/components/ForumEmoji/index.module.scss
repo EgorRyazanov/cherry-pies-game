@@ -10,22 +10,26 @@
 
 .emojiWrapper {
   display: flex;
+  align-items: center;
   border-radius: 16px;
   border: 1px solid;
-  gap: 5px;
+  gap: 1px;
 }
 
 .emojiSpan {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 25px;
   height: 25px;
-  text-align: center;
 }
 
 .emojiCount {
+  font-size: 14px;
+  text-align: centr;
   margin-right: 5px;
+  text-align: centr;
 }
 
 .pickerContainer {
@@ -46,4 +50,3 @@
   position: absolute;
   top: 100%;
 }
-

@@ -32,8 +32,43 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
           avatar: null,
           email: 'test@gmail.com',
         },
-        likesCount: 123,
-        isLiked: false,
+        reactions: [
+          {
+            topic_id: '11',
+            emoji: '1f600',
+            user_id: 4546456,
+          },
+          {
+            topic_id: '11',
+            emoji: '1f600',
+            user_id: 4546456,
+          },
+          {
+            topic_id: '11',
+            emoji: '1f600',
+            user_id: 4546456,
+          },
+          {
+            topic_id: '11',
+            emoji: '1f600',
+            user_id: 4546456,
+          },
+          {
+            topic_id: '11',
+            emoji: '1f600',
+            user_id: 4546457,
+          },
+          {
+            topic_id: '11',
+            emoji: '1f601',
+            user_id: 4546456,
+          },
+          {
+            topic_id: '11',
+            emoji: '1f601',
+            user_id: 4546456,
+          },
+        ],
       },
       {
         id: '12',
@@ -49,8 +84,13 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
           avatar: null,
           email: 'test@gmail.com',
         },
-        likesCount: 123,
-        isLiked: false,
+        reactions: [
+          {
+            topic_id: '12',
+            emoji: '1f601',
+            user_id: 4546456,
+          },
+        ],
       },
       {
         id: '13',
@@ -66,8 +106,13 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
           avatar: null,
           email: 'test@gmail.com',
         },
-        likesCount: 123,
-        isLiked: false,
+        reactions: [
+          {
+            topic_id: '11',
+            emoji: '1f618',
+            user_id: 4546456,
+          },
+        ],
       },
     ],
   },
@@ -91,8 +136,13 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
           avatar: null,
           email: 'test@gmail.com',
         },
-        likesCount: 123,
-        isLiked: true,
+        reactions: [
+          {
+            topic_id: '11',
+            emoji: '1f917',
+            user_id: 4546456,
+          },
+        ],
       },
     ],
   },

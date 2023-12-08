@@ -15,28 +15,19 @@ services:
         environment:
           - CLIENT_PORT=${CLIENT_PORT}
           - SERVER_PORT=${SERVER_PORT}
-        depends_on:
-          - postgres
-        networks:
-          - awesome
-#    server:
-#        container_name: prakticum-server
-#        image: prackicum-server
-#        build:
-#            context: .
-#            dockerfile: Dockerfile.server
-#            args:
-#              SERVER_PORT: ${SERVER_PORT}
-#        restart: always
-#        ports:
-#            - "${SERVER_PORT}:${SERVER_PORT}"
-#        environment:
-#          SERVER_PORT: ${SERVER_PORT}
-#        depends_on:
-#          - postgres
-#        networks:
-#          - awesome
-
+    server:
+        container_name: prakticum-server
+        image: prackicum-server
+        build:
+            context: .
+            dockerfile: Dockerfile.server
+            args:
+              SERVER_PORT: ${SERVER_PORT}
+        restart: always
+        ports:
+            - "${SERVER_PORT}:${SERVER_PORT}"
+        environment:
+          SERVER_PORT: ${SERVER_PORT}
     postgres:
       image: postgres:14     
       ports:
@@ -47,5 +38,3 @@ services:
         POSTGRES_DB: ${POSTGRES_DB}
       volumes:
         - ./tmp/pgdata:/var/lib/postgresql/data
-      networks:
-        - awesome

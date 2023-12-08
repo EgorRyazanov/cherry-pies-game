@@ -1,9 +1,3 @@
-### docker compose
-
-1. docker-compose up -d client
-2. docker-compose up -d server
-3. docker-compose up -d postgres
-
 ### SSR
 
 1. cd client

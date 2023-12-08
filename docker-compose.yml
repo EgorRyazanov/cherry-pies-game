@@ -33,11 +33,12 @@ services:
         environment:
           SERVER_PORT: ${SERVER_PORT}
         depends_on:
-          - postgres
+          - client
         networks:
           - awesome
+        command: sh -c "sleep 10 && npm start"
     postgres:
-      image: postgres:14     
+      image: postgres:14
       ports:
         - "${POSTGRES_PORT}:${POSTGRES_PORT}"
       environment:

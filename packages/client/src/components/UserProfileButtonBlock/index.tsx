@@ -6,15 +6,18 @@ type TUserProfileButtonBlock = {
   logOut: () => void
   userDataChange: () => void
   passwordChange: () => void
+  editCityChange: () => void
 }
 
 export const UserProfileButtonBlock = ({
   logOut,
   passwordChange,
   userDataChange,
+  editCityChange,
 }: TUserProfileButtonBlock) => {
   return (
     <div className={style.buttonWrapper}>
+      <UserFormLinkButton text="Изменить город" callback={editCityChange} />
       <UserFormLinkButton text="Изменить данные" callback={userDataChange} />
       <UserFormLinkButton text="Изменить пароль" callback={passwordChange} />
       <UserFormLinkButton

@@ -12,17 +12,18 @@ export const filterAndCountDublicate = (data: TReaction[]) => {
   newArr.forEach((item, index) => {
     inter[JSON.stringify(item)] = index
   })
-  let result = Object.keys(inter).map(item => JSON.parse(item))
+  const result = Object.keys(inter).map(item => JSON.parse(item))
 
-  let counter = result.reduce((o, i) => {
-    if (!o.hasOwnProperty(i.emoji)) {
-      o[i.emoji] = 0
+  const counter = result.reduce((obj, i) => {
+    const res = { ...obj }
+    if (!Object.prototype.hasOwnProperty.call(res, i.emoji)) {
+      res[i.emoji] = 0
     }
-    o[i.emoji]++
-    return o
+    res[i.emoji]++
+    return res
   }, {})
 
-  let currentArr = Object.keys(counter).map(emoji => {
+  const currentArr = Object.keys(counter).map(emoji => {
     return { emoji: emoji, count: counter[emoji] }
   })
 

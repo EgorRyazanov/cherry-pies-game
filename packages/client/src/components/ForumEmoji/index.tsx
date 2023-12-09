@@ -3,7 +3,7 @@ import styles from './index.module.scss'
 import Picker from '@emoji-mart/react'
 import data from '@emoji-mart/data'
 import smile from '../../assets/smiley-plus.svg'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hook/hook'
 import { getUserData } from '../../store/user/selectors'
 import { forumApi } from '../../api/forumApi'
@@ -33,13 +33,6 @@ export const ForumEmoji = ({ comment }: ForumEmojiProps) => {
     await forumApi.addReaction(Number(comment.id), data.unified, user.id!)
     dispatch(fetchReactions(Number(comment.id)))
   }
-  /* 
-  const handleOnClick = async (e) => {
-    console.log(String.fromCodePoint(parseInt(e.target.innerHTML, 16)));
-    
-    await forumApi.deleteReaction(Number(comment.id), e.unified, user.id!);
-    dispatch(fetchReactions(Number(comment.id)))
-  } */
 
   const arr = filterAndCountDublicate(reactions)
 
@@ -73,15 +66,6 @@ export const ForumEmoji = ({ comment }: ForumEmojiProps) => {
           )}
         </div>
       </div>
-      {/*  <button
-            onClick={() => handleLikeButtonClick(comment.id)}
-            className={styles.commentLikeButton}>
-            <Heart
-              fill={comment.isLiked ? '#DC143C' : '#686868'}
-              className={styles.likeButtonImage}
-            />
-            <span className={styles.likeButtonCount}>{comment.likesCount}</span>
-          </button> */}
     </div>
   )
 }

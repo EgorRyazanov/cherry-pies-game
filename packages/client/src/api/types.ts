@@ -121,3 +121,19 @@ export type TLeaderBoardNewLeaderRequestData = {
   ratingFieldName: string
   teamName: string
 }
+export type TOAuthRequestData = {
+  code: string
+  redirect_uri: string
+}
+
+export type TOAuthResponseData = {
+  data: {
+    service_id: string
+  }
+}
+
+export interface ServerError {
+  data: {
+    reason: string
+  }
+}

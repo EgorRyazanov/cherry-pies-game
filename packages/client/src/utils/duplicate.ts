@@ -7,9 +7,8 @@ interface Inter {
   [key: string]: number
 }
 export const filterAndCountDublicate = (data: TReaction[]) => {
-  const newArr = data.slice()
   const inter: Inter = {}
-  newArr.forEach((item, index) => {
+  data.forEach((item, index) => {
     inter[JSON.stringify(item)] = index
   })
   const result = Object.keys(inter).map(item => JSON.parse(item))

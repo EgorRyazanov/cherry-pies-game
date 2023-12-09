@@ -5,7 +5,6 @@ export const forumApi = {
     const response = await axiosInstance.post(
       `/comment/${topic_id}/reactions`,
       {
-        topic_id,
         emoji: '0x' + emoji,
         user_id,
       }

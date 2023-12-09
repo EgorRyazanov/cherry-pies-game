@@ -3,18 +3,12 @@
 
 import { TReaction } from '../pages/Forum/types'
 
-interface Inter {
+interface IObj {
   [key: string]: number
 }
-export const filterAndCountDublicate = (data: TReaction[]) => {
-  const inter: Inter = {}
-  data.forEach((item, index) => {
-    inter[JSON.stringify(item)] = index
-  })
-  const result = Object.keys(inter).map(item => JSON.parse(item))
-
-  const counter = result.reduce((obj, i) => {
-    const res = { ...obj }
+export const countDublicate = (data: TReaction[]) => {
+  const counter: IObj = data.reduce((obj, i) => {
+    const res: IObj = { ...obj }
     if (!Object.prototype.hasOwnProperty.call(res, i.emoji)) {
       res[i.emoji] = 0
     }

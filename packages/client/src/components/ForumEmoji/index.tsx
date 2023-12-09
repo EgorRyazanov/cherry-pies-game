@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../hook/hook'
 import { getUserData } from '../../store/user/selectors'
 import { forumApi } from '../../api/forumApi'
 import { fetchReactions } from '../../store/forum/dispatchecrs'
-import { filterAndCountDublicate } from '../../utils/duplicate'
+import { countDublicate } from '../../utils/duplicate'
 
 type ForumEmojiProps = {
   comment: TComment
@@ -34,7 +34,7 @@ export const ForumEmoji = ({ comment }: ForumEmojiProps) => {
     dispatch(fetchReactions(Number(comment.id)))
   }
 
-  const arr = filterAndCountDublicate(reactions)
+  const arr = countDublicate(reactions)
 
   return (
     <div className={styles.reactions}>

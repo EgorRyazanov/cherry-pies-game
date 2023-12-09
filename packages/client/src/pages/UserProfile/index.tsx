@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
-import { getUserData } from '../../store/user/selectors'
-import { UserAvatar } from '../../components/UserAvatar'
 import { TUserData, TUserPassword } from '../../api/types'
-import { useAppDispatch, useAppSelector } from '../../hook/hook'
-import { UserProfileFormTemplate } from '../../components/UserProfileFormTemplate'
 import {
-  setUserAvatar,
   changeUserData,
-  getUserDataThunk,
   changeUserPassword,
+  getUserDataThunk,
+  setUserAvatar,
 } from '../../store/user/dispatchecrs'
+import { useAppDispatch, useAppSelector } from '../../hook/hook'
+
+import { UserAvatar } from '../../components/UserAvatar'
+import { UserProfileFormTemplate } from '../../components/UserProfileFormTemplate'
+import { getUserData } from '../../store/user/selectors'
 import style from './index.module.scss'
 
 type TUserProfilePage = {

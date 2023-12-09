@@ -1,11 +1,12 @@
 @import 'src/style/variables';
 
+
 .row {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 2fr 1fr;
   grid-auto-rows: minmax(80px, auto);
-  border-bottom: $white solid 2px;
+  // border-bottom: $white solid 2px;
 }
 
 .td_name {
@@ -18,5 +19,5 @@
 .td_body {
   text-align: center;
   font-size: 26px;
-  color: $white;
+  // color: $white;
 }

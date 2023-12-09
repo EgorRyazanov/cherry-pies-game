@@ -18,7 +18,7 @@ services:
         depends_on:
           - postgres
         networks:
-          - awesome
+          - default
     server:
         container_name: prakticum-server
         image: prackicum-server
@@ -35,8 +35,7 @@ services:
         depends_on:
           - client
         networks:
-          - awesome
-        command: sh -c "sleep 10 && npm start"
+          - default
     postgres:
       image: postgres:14
       ports:
@@ -48,5 +47,6 @@ services:
       volumes:
         - ./tmp/pgdata:/var/lib/postgresql/data
 networks:
-  awesome:
-    driver: bridge
+  outside:
+    external: true
+

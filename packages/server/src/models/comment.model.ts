@@ -40,6 +40,12 @@ Comment.init(
     sequelize,
     modelName: 'Comment',
     tableName: 'comment',
+    indexes: [
+      {
+        name: 'idx_topic_id',
+        fields: ['topic_id'],
+      },
+    ],
   }
 )
 

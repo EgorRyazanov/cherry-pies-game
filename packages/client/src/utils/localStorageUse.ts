@@ -1,4 +1,4 @@
-const getItem = (value: string): string | null | undefined => {
+const getItem = (value: string) => {
   if (typeof window !== 'undefined') {
     return window.localStorage.getItem(value)
   }

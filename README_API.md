@@ -24,7 +24,7 @@ ANSWER
 
 # Получить топики
 GET 
-http://localhost:8080/api/topic
+http://localhost:3001/api/topic
 
 ```json
 [
@@ -45,7 +45,7 @@ http://localhost:8080/api/topic
 # Изменить топик
 
 PUT 
-http://localhost:8080/api/topic
+http://localhost:3001/api/topic
 
 ```json
 {
@@ -70,7 +70,7 @@ ANSWER
 
 # Добавить коментарий к топику
 POST
-http://localhost:8080/api/comment?id=1
+http://localhost:3001/api/comment?id=1
 
 ```json
 {
@@ -93,7 +93,7 @@ ANSWER
 
 # Получить коментарии к топику
 GET
-http://localhost:8080/api/comment?id=1
+http://localhost:3001/api/comment?id=1
 
 
 ANSWER

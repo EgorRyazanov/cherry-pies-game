@@ -12,10 +12,10 @@ const forumSlice = createSlice({
         fetchReactions.fulfilled,
         (state, action: PayloadAction<any>) => {
           if (action.payload.data[0]) {
-            const topic_id = action.payload.data[0].topic_id
+            const commentId = action.payload.data[0].comment_id
             state.data.map(item => {
               const existingComment = item.comments.find(
-                comment => `${comment.id}` === topic_id
+                comment => `${comment.id}` === commentId
               )
               if (existingComment) {
                 existingComment.reactions = action.payload.data

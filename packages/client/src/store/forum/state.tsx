@@ -1,6 +1,6 @@
 export type ReactionType = {
   id: number
-  topic_id: string
+  comment_id: string
   emoji: string
   user_id: string
 }
@@ -21,7 +21,7 @@ export const initialState = {
           reactions: [
             {
               id: null,
-              topic_id: '',
+              comment_id: '',
               emoji: '',
               user_id: '',
             },

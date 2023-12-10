@@ -25,7 +25,7 @@ export const ForumEmoji = ({ comment }: ForumEmojiProps) => {
     setReactions([
       ...reactions,
       {
-        topic_id: comment.id,
+        comment_id: comment.id,
         emoji: data.unified,
         user_id: user.id,
       },

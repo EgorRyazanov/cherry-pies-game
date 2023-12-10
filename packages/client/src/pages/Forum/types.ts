@@ -8,7 +8,7 @@ export type TForum = {
 }
 
 export type TReaction = {
-  topic_id: string
+  comment_id: string
   emoji: string
   user_id: number
 }

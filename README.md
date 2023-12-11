@@ -4,7 +4,7 @@
 2. yarn build:ssr
 3. yarm build
 4. yarn link "client"
-5. cd server
+5. cd simpleServer
 6. yarn link client
 7. yarn build
 8. NODE_ENV=development node dist/index.js
@@ -15,7 +15,7 @@
 2. Выполните команду `yarn bootstrap` - это обязательный шаг, без него ничего работать не будет :)
 3. Выполните команду `yarn dev`
 3. Выполните команду `yarn dev --scope=client` чтобы запустить только клиент
-4. Выполните команду `yarn dev --scope=server` чтобы запустить только server
+4. Выполните команду `yarn dev --scope=simpleServer` чтобы запустить только simpleServer
 
 
 ### Как добавить зависимости?
@@ -25,14 +25,14 @@
 ```yarn lerna add {your_dep} --scope client```
 
 Для сервера
-```yarn lerna add {your_dep} --scope server```
+```yarn lerna add {your_dep} --scope simpleServer```
 
 И для клиента и для сервера
 ```yarn lerna add {your_dep}```
 
 
 Если вы хотите добавить dev зависимость, проделайте то же самое, но с флагом `dev`
-```yarn lerna add {your_dep} --dev --scope server```
+```yarn lerna add {your_dep} --dev --scope simpleServer```
 
 
 ### Тесты
@@ -57,7 +57,7 @@
 
 
 `yarn preview --scope client`
-`yarn preview --scope server`
+`yarn preview --scope simpleServer`
 
 ## Хуки
 В проекте используется [lefthook](https://github.com/evilmartians/lefthook)
@@ -80,8 +80,8 @@
 
 `docker compose up` - запустит три сервиса
 1. nginx, раздающий клиентскую статику (client)
-2. node, ваш сервер (server)
+2. node, ваш сервер (simpleServer)
 3. postgres, вашу базу данных (postgres)
 
 Если вам понадобится только один сервис, просто уточните какой в команде
-`docker compose up {sevice_name}`, например `docker compose up server`
+`docker compose up {sevice_name}`, например `docker compose up simpleServer`

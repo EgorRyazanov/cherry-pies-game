@@ -121,7 +121,6 @@ export type TLeaderBoardNewLeaderRequestData = {
   ratingFieldName: string
   teamName: string
 }
-
 export type TOAuthRequestData = {
   code: string
   redirect_uri: string

@@ -15,6 +15,10 @@ services:
         environment:
           - CLIENT_PORT=${CLIENT_PORT}
           - SERVER_PORT=${SERVER_PORT}
+        depends_on:
+          - postgres
+        networks:
+          - default
     server:
         container_name: prakticum-server
         image: prackicum-server
@@ -28,9 +32,12 @@ services:
             - "${SERVER_PORT}:${SERVER_PORT}"
         environment:
           SERVER_PORT: ${SERVER_PORT}
-
+        depends_on:
+          - client
+        networks:
+          - default
     postgres:
-      image: postgres:14     
+      image: postgres:14
       ports:
         - "${POSTGRES_PORT}:${POSTGRES_PORT}"
       environment:
@@ -39,4 +46,7 @@ services:
         POSTGRES_DB: ${POSTGRES_DB}
       volumes:
         - ./tmp/pgdata:/var/lib/postgresql/data
+networks:
+  outside:
+    external: true
 

@@ -21,7 +21,7 @@ export const LocationCity: React.FC<LocationCityProps> = ({ open, isEdit }) => {
       localStorageUse.saveItem('city', isCity)
     }
     if (!isCity && localStorageUse.getItem('city')) {
-      setIsCity(localStorageUse.getItem('city'))
+      setIsCity(localStorageUse.getItem('city') ?? '')
     }
   }, [isCity])
 

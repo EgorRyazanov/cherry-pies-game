@@ -7,8 +7,8 @@ import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hook/hook'
 import { getUserData } from '../../store/user/selectors'
 import { forumApi } from '../../api/forumApi'
-import { fetchReactions } from '../../store/forum/dispatchecrs'
 import { countDublicate } from '../../utils/duplicate'
+import { fetchReactions } from '../../store/forum/dispatchers'
 
 type ForumEmojiProps = {
   comment: TComment

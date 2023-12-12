@@ -7,9 +7,8 @@ import { leaderBoardReducer } from './leaderBoard/slice'
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    forum: forumReducer,
-    leaderBoard: leaderBoardReducer,
     forum: forumsReducer,
+    leaderBoard: leaderBoardReducer,
   },
   devTools: true,
 })

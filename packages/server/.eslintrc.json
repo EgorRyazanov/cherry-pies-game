@@ -1,5 +1,4 @@
 {
-  "extends": ["../../.eslintrc.js", "airbnb-base"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "import/prefer-default-export": "off",

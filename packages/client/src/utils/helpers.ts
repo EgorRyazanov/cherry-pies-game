@@ -12,5 +12,6 @@ export const getFullUrlToResource = (
 }
 
 export const generateYandexOAuthUrl = (serviceId: string): string => {
+  // eslint-disable-next-line max-len
   return `https://oauth.yandex.ru/authorize?response_type=code&client_id=${serviceId}&redirect_uri=${OAUTH_REDIRECT_URL}`
 }

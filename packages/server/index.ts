@@ -1,11 +1,13 @@
-import dotenv from 'dotenv'
-import cors from 'cors'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { createServer as createViteServer } from 'vite'
-import type { ViteDevServer } from 'vite'
-import express from 'express'
 import * as fs from 'fs'
 import * as path from 'path'
+
+import type { ViteDevServer } from 'vite'
+import commentRouter from './src/router/comment.router'
+import cors from 'cors'
+import { createServer as createViteServer } from 'vite'
+import dotenv from 'dotenv'
+import express from 'express'
+import topicRouter from './src/router/topic.router'
 
 dotenv.config()
 
@@ -13,6 +15,11 @@ const isDev = () => process.env.NODE_ENV === 'development'
 
 async function startServer() {
   const app = express()
+
+  app.use(express.json())
+  app.use('/api', topicRouter)
+  app.use('/api', commentRouter)
+
   app.use(cors())
   const port = Number(process.env.SERVER_PORT) || 3001
 

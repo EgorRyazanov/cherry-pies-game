@@ -1,28 +1,52 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-
-import { TForumDetails, TForumMessageCreation } from '../types'
-import { MOCK_FORUMS_DETAILS } from '../mockForums'
-import { ForumComment } from '../../../components/ForumComment'
-import { ForumMessageForm } from '../../../components/ForumMessageForm'
-import styles from './index.module.scss'
+//
 import { Avatar } from '../../../components/Avatar'
+import { addComment } from '../../../store/forum/slice'
+import { getUserData } from '../../../store/user/selectors'
+import { ForumComment } from '../../../components/ForumComment'
+import { TForumDetails, TForumMessageCreation } from '../types'
+import { getForumPageData } from '../../../store/forum/selectors'
+import { useAppDispatch, useAppSelector } from '../../../hook/hook'
+import { ForumMessageForm } from '../../../components/ForumMessageForm'
+
+import styles from './index.module.scss'
+import {
+  addCommentThunk,
+  getForumByIdThunk,
+} from '../../../store/forum/dispatchers'
 
 // TODO: рассмотреть динамическую пагинацию комментариев
 export const ForumDetails = () => {
+  const dispatch = useAppDispatch()
+  const { user } = useAppSelector(getUserData)
+  const { selectedForum } = useAppSelector(getForumPageData)
   const [forum, setForum] = useState<null | TForumDetails>(null)
 
   const { id } = useParams()
 
   const handleSubmit = (forumMessageCreation: TForumMessageCreation) => {
-    if (forumMessageCreation.message) {
-      console.log(forumMessageCreation.message)
+    const comment = forumMessageCreation.message.trim()
+
+    if (comment.length && id) {
+      dispatch(addComment({ id, user, comment }))
+      dispatch(addCommentThunk({ forumId: id, data: forumMessageCreation }))
     }
   }
 
   useEffect(() => {
-    setForum(MOCK_FORUMS_DETAILS.filter(forum => forum.id === id).at(0) ?? null)
-  }, [id])
+    if (id) {
+      dispatch(getForumByIdThunk(id))
+    } else {
+      setForum(null)
+    }
+  }, [id, selectedForum])
+
+  useEffect(() => {
+    if (selectedForum) {
+      setForum(selectedForum)
+    }
+  }, [selectedForum])
 
   if (!forum) {
     return (

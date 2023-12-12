@@ -32,6 +32,7 @@ const notificationApi = async (data: IData) => {
     }
 
     granted ? showNotification() : console.log('You blocked the notifications')
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error(err.message)
   }

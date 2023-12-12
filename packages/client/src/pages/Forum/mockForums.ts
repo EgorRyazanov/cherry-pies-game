@@ -19,7 +19,7 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
     image: '/src/assets/avatar.svg',
     comments: [
       {
-        id: '11',
+        id: '1',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sed officia veniam. Voluptatibus a temporibus corrupti expedita delectus! Repellat optio recusandae quia nobis iste, sint consectetur sequi corporis est et.',
         date: '2023-10-26T08:26:16Z',
         user: {
@@ -71,7 +71,7 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
         ],
       },
       {
-        id: '12',
+        id: '2',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sed officia veniam. Voluptatibus a temporibus corrupti expedita delectus! Repellat optio recusandae quia nobis iste, sint consectetur sequi corporis est et.',
         date: '2023-10-26T08:26:16Z',
         user: {
@@ -93,7 +93,7 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
         ],
       },
       {
-        id: '13',
+        id: '3',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sed officia veniam. Voluptatibus a temporibus corrupti expedita delectus! Repellat optio recusandae quia nobis iste, sint consectetur sequi corporis est et.',
         date: '2023-10-26T08:26:16Z',
         user: {
@@ -123,7 +123,7 @@ export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
     image: '/src/assets/avatar.svg',
     comments: [
       {
-        id: '12',
+        id: '1',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sed officia veniam. Voluptatibus a temporibus corrupti expedita delectus! Repellat optio recusandae quia nobis iste, sint consectetur sequi corporis est et.',
         date: '2023-10-26T10:25:31+0000',
         user: {

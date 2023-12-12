@@ -34,25 +34,6 @@ export const ForumDetails = () => {
     }
   }
 
-  // Заглушка для отображения функционала лайков
-  const handleLikeButtonClick = (commentId: string) => {
-    const targetComment = forum?.comments.find(
-      comment => comment.id === commentId
-    )
-    if (targetComment) {
-      if (targetComment.isLiked) {
-        targetComment.likesCount -= 1
-        targetComment.isLiked = false
-      } else {
-        targetComment.likesCount += 1
-        targetComment.isLiked = true
-      }
-    }
-    if (forum) {
-      setForum({ ...forum })
-    }
-  }
-
   useEffect(() => {
     if (id) {
       dispatch(getForumByIdThunk(id))
@@ -90,11 +71,7 @@ export const ForumDetails = () => {
         </h4>
         <div className={styles.commentsWrapper}>
           {forum.comments.map(comment => (
-            <ForumComment
-              key={comment.id}
-              comment={comment}
-              handleLikeButtonClick={handleLikeButtonClick}
-            />
+            <ForumComment key={comment.id} comment={comment} />
           ))}
         </div>
         <ForumMessageForm handleSubmit={handleSubmit} />

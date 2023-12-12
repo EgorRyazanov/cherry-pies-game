@@ -1,18 +1,15 @@
 import { TComment } from '../../pages/Forum/types'
-import { ReactComponent as Heart } from '../../assets/heart.svg'
+// import { ReactComponent as Heart } from '../../assets/heart.svg'
 import { convertISOtoTimeDateMonth } from '../../utils/dateConvertors'
 import styles from './index.module.scss'
 import { Avatar } from '../Avatar'
+import { ForumEmoji } from '../ForumEmoji'
 
 type ForumCommentProps = {
   comment: TComment
-  handleLikeButtonClick: (commentId: string) => void
 }
 
-export const ForumComment = ({
-  comment,
-  handleLikeButtonClick,
-}: ForumCommentProps) => {
+export const ForumComment = ({ comment }: ForumCommentProps) => {
   return (
     <div className={styles.comment}>
       <div className={styles.commentAvatarContainer}>
@@ -26,15 +23,7 @@ export const ForumComment = ({
           {comment.text}
         </p>
         <div className={styles.commentActions}>
-          <button
-            onClick={() => handleLikeButtonClick(comment.id)}
-            className={styles.commentLikeButton}>
-            <Heart
-              fill={comment.isLiked ? '#DC143C' : '#686868'}
-              className={styles.likeButtonImage}
-            />
-            <span className={styles.likeButtonCount}>{comment.likesCount}</span>
-          </button>
+          <ForumEmoji comment={comment} />
           <span className={styles.font_13}>
             {convertISOtoTimeDateMonth(comment.date)}
           </span>

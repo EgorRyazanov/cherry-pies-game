@@ -28,3 +28,5 @@ export type TForumDetails = TForum & {
 export type TForumMessageCreation = {
   message: string
 }
+
+export type TAddCommentData = { forumId: string; data: TForumMessageCreation }

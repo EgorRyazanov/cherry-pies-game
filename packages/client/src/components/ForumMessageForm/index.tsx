@@ -13,8 +13,16 @@ export const ForumMessageForm = ({
   handleSubmit,
   className = '',
 }: FormMessageFormProps) => {
+  const innerHandleSubmit = (
+    data: TForumMessageCreation,
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    handleSubmit(data)
+    resetForm()
+  }
+
   return (
-    <Formik initialValues={{ message: '' }} onSubmit={handleSubmit}>
+    <Formik initialValues={{ message: '' }} onSubmit={innerHandleSubmit}>
       <Form className={`${styles['message-form']} ${className}`}>
         <FormInput
           id="message"

@@ -1,3 +1,5 @@
+ссылка на видео демонстрацию: https://disk.yandex.ru/d/INAVXMHGxX1LAw
+
 ### SSR
 
 1. cd client

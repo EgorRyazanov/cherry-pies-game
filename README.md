@@ -2,9 +2,9 @@
 
 1. cd client
 2. yarn build:ssr
-3. yarm build
+3. yarn build
 4. yarn link "client"
-5. cd simpleServer
+5. cd server
 6. yarn link client
 7. yarn build
 8. NODE_ENV=development node dist/index.js

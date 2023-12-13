@@ -40,8 +40,7 @@ export const forumSlice = createSlice({
       const newComment = {
         id: commentId,
         date,
-        isLiked: false,
-        likesCount: 0,
+        reactions: [],
         text: comment,
         user,
       }

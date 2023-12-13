@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { RootState } from '../index'
 import { createForum } from './slice'
 import { forumApi } from '../../api/forumApi'
-import { TForum, TForumListItem } from './state'
+import { TForum, TForumListItem, TReaction } from './state'
 import { TAddCommentData, TForumCreation } from '../../pages/Forum/types'
 
 export const getForumListThunk = createAsyncThunk<
@@ -56,3 +56,19 @@ export const addCommentThunk = createAsyncThunk<
     .then(response => console.log(response.data))
     .catch(error => rejectWithValue(error))
 })
+
+export const fetchReactions = createAsyncThunk(
+  'forum/reactionsByTopicId',
+  async (topic_id: number, thunkAPI) => {
+    try {
+      const response = (await forumApi.getReactionsByTopicId(
+        topic_id
+      )) as TReaction
+      return response
+    } catch (error) {
+      return thunkAPI.rejectWithValue({
+        error: (error as Error | null)?.message,
+      })
+    }
+  }
+)

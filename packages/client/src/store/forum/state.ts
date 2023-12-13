@@ -6,13 +6,18 @@ export type TForumListItem = {
   title: string
 }
 
+export type TReaction = {
+  comment_id: string
+  emoji: string
+  user_id: number
+}
+
 export type TComment = {
   id: string
   text: string
   date: string
   user: TUserData
-  likesCount: number
-  isLiked: boolean
+  reactions: TReaction[]
 }
 
 export type TForum = {

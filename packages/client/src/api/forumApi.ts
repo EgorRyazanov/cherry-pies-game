@@ -35,7 +35,7 @@ export const forumApi = {
     )
     return response?.data
   },
-  getReactionsByTopicId: async (comment_id: number) => {
+  getReactionsByCommentId: async (comment_id: number) => {
     const response = await axiosInstance.get(`/comment/${comment_id}/reactions`)
     return response?.data
   },

@@ -33,16 +33,16 @@ export const getForumByIdThunk = createAsyncThunk<
   TForum,
   string,
   { state: RootState; rejectValue: string }
->('forum/getForumByIdThunk', (id, { getState, rejectWithValue }) => {
+>('forum/getForumByIdThunk', (id, { rejectWithValue }) => {
   return forumApi
     .getForumById(id)
-    .then(() => {
+    .then(
       // временное решение, т.к. не готова API форумов, решение делать на моковых серверах согласовано с ментором
       // после ввода в строй нашего сервера, будут удалены следующие две строки и раскомментирована последняя строка
-      const forums = getState().forum.forumDataList
-      return forums.filter(forum => forum.id === id)[0]
-      // response response.data;
-    })
+      // const forums = getState().forum.forumDataList
+      //return forums.filter(forum => forum.id === id)[0]
+      response => response.data
+    )
     .catch(error => rejectWithValue(error))
 })
 
@@ -59,10 +59,10 @@ export const addCommentThunk = createAsyncThunk<
 
 export const fetchReactions = createAsyncThunk(
   'forum/reactionsByTopicId',
-  async (topic_id: number, thunkAPI) => {
+  async (comment_id: number, thunkAPI) => {
     try {
-      const response = (await forumApi.getReactionsByTopicId(
-        topic_id
+      const response = (await forumApi.getReactionsByCommentId(
+        comment_id
       )) as TReaction
       return response
     } catch (error) {

@@ -18,8 +18,6 @@ services:
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      POSTGRES_USER: ${POSTGRES_USER:-root}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-root}
-      POSTGRES_DB: my_db
     ports:
       - '${PGADMIN_PORT:-5050}:80'

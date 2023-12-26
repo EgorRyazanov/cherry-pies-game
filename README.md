@@ -2,7 +2,7 @@
 
 1. cd client
 2. yarn build:ssr
-3. yarm build
+3. yarn build
 4. yarn link "client"
 5. cd simpleServer
 6. yarn link client

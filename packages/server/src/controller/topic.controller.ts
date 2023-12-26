@@ -6,12 +6,9 @@ import xss from 'xss'
 class TopicController {
   async createTopic(req: Request, res: Response) {
     try {
-      const { title, text, likes_count, description } = req.body
+      const { title } = req.body
       const newTopic = await Topic.create({
         title,
-        text,
-        likes_count,
-        description,
       })
 
       const sanitizedTopic = {

@@ -26,7 +26,7 @@ Comment.init(
     },
     likes_count: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     topic_id: {
       type: DataTypes.INTEGER,

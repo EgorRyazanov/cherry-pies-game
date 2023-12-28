@@ -19,7 +19,7 @@ export enum END_POINTS_URL {
   LEADER_BOARD_ALL = '/leaderboard/all',
   GET_FORUM_TOPICS = 'http://localhost:3001/api/topic',
   CREATE_FORUM_TOPIC = 'http://localhost:3001/api/topic',
-  GET_FORUM_BY_ID = 'http://localhost:3001/api/comment?id=',
+  GET_FORUM_BY_ID = 'http://localhost:3001/api/topic',
   ADD_COMMENT = 'http://localhost:3001/api/comment',
   /*   GET_FORUM_TOPICS = 'https://run.mocky.io/v3/47a20117-0a8b-41b0-88b0-9746cd2aab46',
   CREATE_FORUM_TOPIC = 'https://run.mocky.io/v3/6d920d59-d64e-49e6-92eb-31392e0ac054',

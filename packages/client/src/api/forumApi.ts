@@ -27,7 +27,7 @@ export const forumApi = {
   },
   addReaction: async (comment_id: number, emoji: string, user_id: number) => {
     const response = await axiosInstance.post(
-      `/comment/${comment_id}/reactions`,
+      `${END_POINTS_URL.ADD_REACTION}/${comment_id}/reactions`,
       {
         emoji: '0x' + emoji,
         user_id,
@@ -36,7 +36,9 @@ export const forumApi = {
     return response?.data
   },
   getReactionsByCommentId: async (comment_id: number) => {
-    const response = await axiosInstance.get(`/comment/${comment_id}/reactions`)
+    const response = await axiosInstance.get(
+      `${END_POINTS_URL.ADD_REACTION}/${comment_id}/reactions`
+    )
     return response?.data
   },
 }

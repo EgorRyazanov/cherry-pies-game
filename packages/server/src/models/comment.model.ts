@@ -20,6 +20,7 @@ Comment.init(
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     comment: {
       type: DataTypes.STRING,

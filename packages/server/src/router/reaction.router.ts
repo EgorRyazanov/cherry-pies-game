@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import reactionController from '../controller/reactionController'
+import reactionController from '../controller/reaction.controller'
 
 const router = Router()
 

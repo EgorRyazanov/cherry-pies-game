@@ -30,6 +30,7 @@ export const forumSlice = createSlice({
       action: PayloadAction<{ id: string; comment: string; user: TUserData }>
     ) {
       const { id, comment, user } = action.payload
+      console.log(id, comment, user)
 
       const selectedForum = state.forumDataList[+id - 1]
 
@@ -46,7 +47,7 @@ export const forumSlice = createSlice({
       }
 
       state.forumDataList[+id - 1].comments.push(newComment)
-      state.selectedForum?.comments?.push(newComment)
+      state.selectedForum?.comments.push(newComment)
     },
   },
   extraReducers: builder => {
@@ -84,7 +85,9 @@ export const forumSlice = createSlice({
       getForumByIdThunk.fulfilled,
       (state: TInitialState, action: PayloadAction<TForum>) => {
         state.isLoading = false
-        state.selectedForum = action.payload
+        state.selectedForum.description = action.payload.description
+        state.selectedForum.id = action.payload.id
+        state.selectedForum.title = action.payload.title
       }
     )
   },

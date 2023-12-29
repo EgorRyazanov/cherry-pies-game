@@ -35,7 +35,7 @@ export type TInitialState = {
   newForumDescription: string
   newComment: string
   forumList: TForumListItem[]
-  selectedForum: TForum | null
+  selectedForum: TForum
   forumDataList: TForum[]
 }
 
@@ -47,5 +47,11 @@ export const initialState: TInitialState = {
   newComment: '',
   forumList: [],
   forumDataList: MOCK_FORUMS_DETAILS,
-  selectedForum: null,
+  selectedForum: {
+    id: '',
+    title: '',
+    description: '',
+    image: '',
+    comments: [],
+  },
 }

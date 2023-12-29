@@ -6,12 +6,10 @@ import xss from 'xss'
 class CommentController {
   async createComment(req: Request, res: Response) {
     try {
-      const { title, comment, topic_id, likes_count } = req.body
+      const { topic_id, comment } = req.body
       const newComment = await Comment.create({
-        title,
-        comment,
         topic_id,
-        likes_count,
+        comment,
       })
 
       const sanitizedComment = {

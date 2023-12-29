@@ -38,4 +38,4 @@ export type TForumMessageCreation = {
   message: string
 }
 
-export type TAddCommentData = { forumId: string; data: TForumMessageCreation }
+export type TAddCommentData = { topic_id: string; comment: string }

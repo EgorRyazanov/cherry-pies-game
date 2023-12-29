@@ -18,13 +18,17 @@ export const ForumPage = () => {
     }
   }, [dispatch])
 
-  const forumsToRender = forumList.map(mockForum => (
-    <li key={mockForum.id}>
-      <Link className={`${styles.forum} ${styles.font_32}`} to={mockForum.id}>
-        {mockForum.title}
-      </Link>
-    </li>
-  ))
+  const forumsToRender = forumList.map(mockForum => {
+    return (
+      <li key={mockForum.id}>
+        <Link
+          className={`${styles.forum} ${styles.font_32}`}
+          to={`${mockForum.id}`}>
+          {mockForum.title}
+        </Link>
+      </li>
+    )
+  })
 
   return (
     <div className={styles.wrapper}>

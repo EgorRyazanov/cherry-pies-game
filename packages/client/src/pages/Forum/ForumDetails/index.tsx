@@ -29,8 +29,9 @@ export const ForumDetails = () => {
     const comment = forumMessageCreation.message.trim()
 
     if (comment.length && id) {
+      dispatch(addCommentThunk({ topic_id: id, comment: comment }))
       dispatch(addComment({ id, user, comment }))
-      dispatch(addCommentThunk({ forumId: id, data: forumMessageCreation }))
+      console.log('selectedForum', selectedForum)
     }
   }
 
@@ -40,11 +41,12 @@ export const ForumDetails = () => {
     } else {
       setForum(null)
     }
-  }, [id, selectedForum])
+  }, [dispatch, id])
 
   useEffect(() => {
     if (selectedForum) {
       setForum(selectedForum)
+      console.log('forum', forum)
     }
   }, [selectedForum])
 
@@ -70,9 +72,10 @@ export const ForumDetails = () => {
           Комментарии:
         </h4>
         <div className={styles.commentsWrapper}>
-          {forum.comments.map(comment => (
-            <ForumComment key={comment.id} comment={comment} />
-          ))}
+          {forum &&
+            forum.comments.map(comment => (
+              <ForumComment key={comment.id} comment={comment} />
+            ))}
         </div>
         <ForumMessageForm handleSubmit={handleSubmit} />
       </div>

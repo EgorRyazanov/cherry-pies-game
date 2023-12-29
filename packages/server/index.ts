@@ -8,6 +8,7 @@ import { createServer as createViteServer } from 'vite'
 import dotenv from 'dotenv'
 import express from 'express'
 import topicRouter from './src/router/topic.router'
+import helmet from 'helmet'
 
 dotenv.config()
 
@@ -17,6 +18,10 @@ async function startServer() {
   const app = express()
 
   app.use(express.json())
+
+  app.use(helmet.contentSecurityPolicy())
+  app.use(helmet.xssFilter())
+
   app.use('/api', topicRouter)
   app.use('/api', commentRouter)
 

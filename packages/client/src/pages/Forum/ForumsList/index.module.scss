@@ -8,7 +8,7 @@
 }
 
 .forumTitle {
-  color: $common-white-text;
+  color: var(--alternative-text-color);
   text-align: center;
   margin-bottom: 32px;
 }
@@ -24,14 +24,13 @@
 }
 
 .forum {
-  border: 1px solid $common-white-text;
+  border-radius: $border-raduis;
   padding: 24px 32px;
   width: 100%;
   display: inline-block;
   color: $common-white-text;
-  background-color: $button-color;
+  background-color: var(--primary-color);
   cursor: pointer;
-  box-shadow: 0 4px 4px 0 $shadow-color;
 }
 
 .forumCreation {

@@ -48,11 +48,7 @@ export const FormInput = ({
           touched[name] && errors[name] ? 'error-input' : ''
         } ${inputClassName}`}
       />
-      <ErrorMessage
-        component="p"
-        name={name}
-        className={`form-error-message ${styles.font_8}`}
-      />
+      <ErrorMessage component="p" name={name} className="form-error-message" />
     </div>
   )
 }

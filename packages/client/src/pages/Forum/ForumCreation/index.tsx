@@ -39,7 +39,7 @@ export const ForumCreation = () => {
         onSubmit={handleSubmit}>
         <Form onChange={cleanFetchErrorHandler} className={styles.forumForm}>
           <div className={styles.forumCard}>
-            <h2 className={`${styles.forumTitle} ${styles.font_32}`}>
+            <h2 className={`${styles.forumTitle} ${styles.font_24}`}>
               Создание темы для обсуждения
             </h2>
             <FormInput

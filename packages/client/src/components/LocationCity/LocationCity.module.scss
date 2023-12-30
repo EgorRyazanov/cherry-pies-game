@@ -13,20 +13,19 @@
   justify-content: center;
   align-items: center;
   margin-top: -5px;
-  color: #1e909b;
+  color: var(--primary-color);
   & > :nth-child(2) {
     margin-left: 5px;
   }
 }
 
 .buttonState {
-  border: #1e909b solid;
+  border: var(--primary-color) solid;
   height: 30px;
   border-radius: 9999px;
-  background-color: #ffffff00;
   width: 100px;
-  background-color: #fff;
-  color: #1e909b;
+  background-color: transparent;
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -44,8 +43,8 @@
 }
 
 .NameCity {
-  border: #1e909b 2px solid;
-  color: #1e909b;
+  border: var(--primary-color) 2px solid;
+  color: var(--primary-color);
   border-radius: 99999px;
   width: fit-content;
   padding: 5px 10px;
@@ -69,7 +68,7 @@
 .EditCity {
   cursor: pointer;
   opacity: 1;
-  color: #1e909b;
+  color: var(--alternative-text-color);
 }
 
 .Buttons {

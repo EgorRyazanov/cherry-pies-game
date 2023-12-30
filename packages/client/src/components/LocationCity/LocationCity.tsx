@@ -100,13 +100,12 @@ export const LocationCity: React.FC<LocationCityProps> = ({ open, isEdit }) => {
     <div className={styles.Wrapper}>
       {!open ? (
         <div className={styles.myCity}>
-          <MapPin size={22} color={'#45cad6'} weight={'fill'} />Я здесь!{' '}
-          {isCity}
+          <MapPin size={22} />Я здесь! {isCity}
         </div>
       ) : (
         <>
           <div className={clsx(styles.LocationCity)}>
-            <MapPin size={28} color={'#1e909b'} weight={'fill'} />
+            <MapPin size={28} />
             <h1>
               {isLoading ? <></> : <>{isCity ? isCity : 'Указать город'}</>}
             </h1>
@@ -122,7 +121,7 @@ export const LocationCity: React.FC<LocationCityProps> = ({ open, isEdit }) => {
                       [styles.EditCity]: isEditCity === city.name,
                     })}
                     onClick={() => getCity(city)}>
-                    <h2>{city.name}</h2>
+                    <h3>{city.name}</h3>
                   </div>
                 ))}
               </div>

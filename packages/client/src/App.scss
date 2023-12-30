@@ -17,6 +17,15 @@ body {
   --primary-color: #8eaaf0;
 }
 
+
+body.dark {
+  --background-color: #2f2d2d;
+  --text-color: #1e1e1e;;
+  --alternative-text-color: #fff;
+  --primary-color: #8eaaf0;
+}
+
+
 ul {
   list-style: none;
 }
@@ -129,19 +138,19 @@ svg {
 }
 
 .error-page-header {
-  color: $common-black-text;
+  color: var(--alternative-text-color);
   margin-bottom: 1.25rem;
 }
 
 .error-page-message {
-  color: $common-black-text;
+  color: var(--alternative-text-color);
   margin-top: 0;
   margin-bottom: 1.25rem;
 }
 
 .error-input,
 .error-input::placeholder {
-  color: red;
+  color: $red-alert;
 }
 
 .form-error-message {

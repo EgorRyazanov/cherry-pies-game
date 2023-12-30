@@ -28,7 +28,7 @@
   padding: 24px 32px;
   width: 100%;
   display: inline-block;
-  color: $common-white-text;
+  color: var(--text-color);
   background-color: var(--primary-color);
   cursor: pointer;
 }

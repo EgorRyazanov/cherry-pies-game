@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
+
 import Canvas from '../../components/Canvas/Canvas'
 import useFullScreen from '../../hook/useFullScreen'
+import styles from './index.module.scss'
 
 type TGamePage = {
   logoutCallback: () => void
@@ -13,7 +15,7 @@ const GamePage = ({ logoutCallback }: TGamePage) => {
   )
 
   return (
-    <div ref={ref}>
+    <div className={styles.container} ref={ref}>
       <Canvas />
       <button onClick={logoutCallback}>Logout</button>
       <button onClick={setIsFullScreen}>

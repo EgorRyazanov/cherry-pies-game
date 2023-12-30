@@ -6,6 +6,7 @@ import { useAppSelector } from '../../hook/hook'
 import { ROUTES_NAMES } from '../../const/routeNames'
 import { getUserData } from '../../store/user/selectors'
 import s from './index.module.scss'
+import { ThemeChanger } from '../ThemeChanger'
 
 const Header = () => {
   const { user } = useAppSelector(getUserData)
@@ -19,6 +20,7 @@ const Header = () => {
           <HeaderNavLink to={ROUTES_NAMES.LEADER_BOARD} label="Лидеры" />
           <HeaderNavLink to={ROUTES_NAMES.FORUM} label="Форум" />
         </nav>
+        <ThemeChanger />
         <Avatar imageUrl={user.avatar} />
       </div>
     </header>

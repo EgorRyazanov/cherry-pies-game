@@ -25,7 +25,29 @@ export const forumSlice = createSlice({
         image: '/src/assets/avatar.svg',
       })
     },
+    addComment(state: TInitialState, action: PayloadAction<any>) {
+      state.selectedForum.comments.push(action.payload)
+    },
+    addReaction(
+      state: TInitialState,
+      action: PayloadAction<{
+        id: string
+        comment_id: string
+        emoji: string
+        user_id: number
+      }>
+    ) {
+      const { comment_id } = action.payload
+
+      const existingComment = state.selectedForum.comments.find(
+        comment => `${comment.id}` === comment_id
+      )
+      if (existingComment) {
+        existingComment.reactions.push(action.payload)
+      }
+    },
   },
+
   extraReducers: builder => {
     builder.addCase(getForumListThunk.pending, (state: TInitialState) => {
       state.isError = false
@@ -104,4 +126,4 @@ export const forumSlice = createSlice({
 
 export const forumsReducer = forumSlice.reducer
 
-export const { createForum } = forumSlice.actions
+export const { createForum, addComment, addReaction } = forumSlice.actions

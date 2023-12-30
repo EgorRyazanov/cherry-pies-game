@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Avatar } from '../../../components/Avatar'
-//import { addComment } from '../../../store/forum/slice'
 import { getUserData } from '../../../store/user/selectors'
 import { ForumComment } from '../../../components/ForumComment'
 import { TForumMessageCreation } from '../types'
@@ -15,9 +14,7 @@ import {
   getCommentsListThunk,
   getForumByIdThunk,
 } from '../../../store/forum/dispatchers'
-import useDebounce from '../../../hook/useDebounce'
 
-// TODO: рассмотреть динамическую пагинацию комментариев
 export const ForumDetails = () => {
   const dispatch = useAppDispatch()
   const { user } = useAppSelector(getUserData)
@@ -36,19 +33,13 @@ export const ForumDetails = () => {
       dispatch(getCommentsListThunk(id))
     }
   }
-  const debouncedSelectedForum = useDebounce(selectedForum, 500)
 
   useEffect(() => {
     if (id) {
       dispatch(getForumByIdThunk(id))
-    }
-  }, [id])
-
-  useEffect(() => {
-    if (id) {
       dispatch(getCommentsListThunk(id))
     }
-  }, [dispatch, id, debouncedSelectedForum])
+  }, [id])
 
   if (!selectedForum) {
     return (
@@ -72,7 +63,7 @@ export const ForumDetails = () => {
           Комментарии:
         </h4>
         <div className={styles.commentsWrapper}>
-          {selectedForum &&
+          {selectedForum.comments &&
             selectedForum.comments.map(comment => (
               <ForumComment key={comment.id} comment={comment} />
             ))}

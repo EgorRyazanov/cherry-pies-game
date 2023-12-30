@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { RootState } from '../index'
-import { createForum } from './slice'
+import { addComment, addReaction, createForum } from './slice'
 import { forumApi } from '../../api/forumApi'
 import { TForum, TForumListItem, TReaction } from './state'
 import { TAddCommentData, TForumCreation } from '../../pages/Forum/types'
@@ -45,10 +45,13 @@ export const addCommentThunk = createAsyncThunk<
   void,
   TAddCommentData,
   { rejectValue: string }
->('forum/addCommentThunk', (data, { rejectWithValue }) => {
+>('forum/addCommentThunk', (data, { dispatch, rejectWithValue }) => {
   return forumApi
     .addComment(data)
     .then(response => response.data)
+    .then(res => {
+      dispatch(addComment(res))
+    })
     .catch(error => rejectWithValue(error))
 })
 
@@ -64,10 +67,13 @@ export const getCommentsListThunk = createAsyncThunk(
 
 export const addReactionThunk = createAsyncThunk(
   'forum/addReactionThunk',
-  (data: TReaction, { rejectWithValue }) => {
+  (data: TReaction, { dispatch, rejectWithValue }) => {
     return forumApi
       .addReaction(data)
       .then(response => response.data)
+      .then(res => {
+        dispatch(addReaction(res))
+      })
       .catch(error => rejectWithValue(error))
   }
 )

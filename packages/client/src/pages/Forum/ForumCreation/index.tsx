@@ -1,6 +1,5 @@
 import { Formik, Form } from 'formik'
 import { useState } from 'react'
-//
 import { TForumCreation } from '../types'
 import { validate } from '../../../utils/validator'
 import { useAppDispatch } from '../../../hook/hook'
@@ -12,8 +11,10 @@ import { FormLinkButton } from '../../../components/FormAsLinkButton'
 import { FormSubmitButton } from '../../../components/FormSubmitButton'
 
 import styles from './index.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 export const ForumCreation = () => {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -23,6 +24,7 @@ export const ForumCreation = () => {
   ) => {
     dispatch(createTopicThunk(forumCreation))
     resetForm()
+    navigate(-1)
   }
 
   const cleanFetchErrorHandler = () => {

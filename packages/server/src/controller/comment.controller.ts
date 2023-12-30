@@ -21,6 +21,8 @@ class CommentController {
         comment: xss(newComment?.comment || ''),
         likes_count: newComment?.likes_count,
         reactions: newComment?.reactions,
+        createdAt: newComment?.createdAt,
+        updatedAt: newComment?.updatedAt,
       }
       res.json(sanitizedComment)
     } catch (error) {

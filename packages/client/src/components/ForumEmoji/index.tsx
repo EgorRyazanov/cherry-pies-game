@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hook/hook'
 import { getUserData } from '../../store/user/selectors'
 import { addReactionThunk, fetchReactions } from '../../store/forum/dispatchers'
-import useDebounce from '../../hook/useDebounce'
 
 type ForumEmojiProps = {
   comment: TComment
@@ -31,13 +30,11 @@ export const ForumEmoji = ({ comment }: ForumEmojiProps) => {
     dispatch(fetchReactions(comment.id))
   }
 
-  const debouncedReactions = useDebounce(comment, 500)
-
   useEffect(() => {
     if (comment) {
       dispatch(fetchReactions(comment.id))
     }
-  }, [debouncedReactions])
+  }, [])
 
   return (
     <div className={styles.reactions}>

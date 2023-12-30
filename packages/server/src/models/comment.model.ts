@@ -11,6 +11,8 @@ class Comment extends Model {
   topic_id: number | undefined
   likes_count: number | undefined
   reactions?: [] | undefined
+  createdAt: Date | undefined
+  updatedAt: Date | undefined
 }
 
 Comment.init(
@@ -38,6 +40,16 @@ Comment.init(
     reactions: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
     },
     topic_id: {
       type: DataTypes.INTEGER,

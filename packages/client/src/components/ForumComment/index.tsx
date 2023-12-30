@@ -1,5 +1,4 @@
 import { TComment } from '../../pages/Forum/types'
-// import { ReactComponent as Heart } from '../../assets/heart.svg'
 import { convertISOtoTimeDateMonth } from '../../utils/dateConvertors'
 import styles from './index.module.scss'
 import { Avatar } from '../Avatar'
@@ -32,8 +31,10 @@ export const ForumComment = ({ comment }: ForumCommentProps) => {
           {comment.comment}
         </p>
         <div className={styles.commentActions}>
-          <ForumEmoji comment={comment} />
-          <span className={styles.font_13}>
+          <div>
+            <ForumEmoji comment={comment} />
+          </div>
+          <span className={`${styles.font_13} ${styles.commentDate}`}>
             {convertISOtoTimeDateMonth(comment?.createdAt)}
           </span>
         </div>

@@ -4,14 +4,10 @@ import xss from 'xss'
 
 class ReactionController {
   // Метод для добавления реакции
-  public async addReaction(req: Request, res: Response) {
+  async addReaction(req: Request, res: Response) {
     try {
       const { comment_id } = req.params
       const { emoji, user_id } = req.body
-
-      if (!emoji || !user_id) {
-        res.status(400).json({ message: 'Emoji and User ID are required' })
-      }
 
       const reaction = await Reaction.create({
         comment_id,
@@ -36,7 +32,7 @@ class ReactionController {
   }
 
   // Метод для получения всех реакций на топик
-  public async getReactions(req: Request, res: Response): Promise<Response> {
+  async getReactions(req: Request, res: Response): Promise<Response> {
     try {
       const { comment_id } = req.params
 

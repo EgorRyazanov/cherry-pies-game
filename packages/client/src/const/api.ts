@@ -21,6 +21,7 @@ export enum END_POINTS_URL {
   CREATE_FORUM_TOPIC = 'http://localhost:3001/api/topic',
   GET_FORUM_BY_ID = 'http://localhost:3001/api/topic',
   ADD_COMMENT = 'http://localhost:3001/api/comment',
+  GET_COMMENT_BY_ID = 'http://localhost:3001/api/comment',
   ADD_REACTION = 'http://localhost:3001/api/comment',
 
   /*   GET_FORUM_TOPICS = 'https://run.mocky.io/v3/47a20117-0a8b-41b0-88b0-9746cd2aab46',

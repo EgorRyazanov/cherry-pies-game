@@ -1,5 +1,3 @@
-import { TUserData } from '../../api/types'
-
 export type TForum = {
   id: string
   title: string
@@ -18,12 +16,21 @@ export type TForumCreation = {
   description: string
 }
 
+export type TForumResponse = {
+  id: string
+  title: string
+  description: string
+}
+
 export type TComment = {
   id: string
-  text: string
-  date: string
-  user: TUserData
+  title: string
+  comment: string
+  user_id: string
+  topic_id: string
+  likes_count: string
   reactions: TReaction[]
+  createdAt: string
 }
 
 export type TForumReactions = {
@@ -38,4 +45,8 @@ export type TForumMessageCreation = {
   message: string
 }
 
-export type TAddCommentData = { topic_id: string; comment: string }
+export type TAddCommentData = {
+  topic_id: string
+  comment: string
+  user_id: number
+}

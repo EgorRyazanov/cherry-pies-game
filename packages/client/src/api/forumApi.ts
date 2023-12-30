@@ -5,6 +5,8 @@ import {
   TForumDetails,
   TForumCreation,
   TAddCommentData,
+  TReaction,
+  TForum,
 } from '../pages/Forum/types'
 
 export const forumApi = {
@@ -12,10 +14,7 @@ export const forumApi = {
     return axiosInstance.get<TForumListItem[]>(END_POINTS_URL.GET_FORUM_TOPICS)
   },
   createTopic(data: TForumCreation) {
-    return axiosInstance.post<{ status: string; ok: boolean }>(
-      END_POINTS_URL.CREATE_FORUM_TOPIC,
-      data
-    )
+    return axiosInstance.post<TForum>(END_POINTS_URL.CREATE_FORUM_TOPIC, data)
   },
   getForumById(id: string) {
     return axiosInstance.get<TForumDetails>(
@@ -25,20 +24,27 @@ export const forumApi = {
   addComment(data: TAddCommentData) {
     return axiosInstance.post(END_POINTS_URL.ADD_COMMENT, data)
   },
-  addReaction: async (comment_id: number, emoji: string, user_id: number) => {
-    const response = await axiosInstance.post(
+  getCommentsById(id: string) {
+    return axiosInstance.get<TForumDetails>(
+      `${END_POINTS_URL.GET_COMMENT_BY_ID}/${id}`
+    )
+  },
+  addReaction(data: TReaction) {
+    const { comment_id, emoji, user_id } = data
+    return axiosInstance.post(
       `${END_POINTS_URL.ADD_REACTION}/${comment_id}/reactions`,
       {
         emoji: '0x' + emoji,
         user_id,
       }
     )
-    return response?.data
   },
-  getReactionsByCommentId: async (comment_id: number) => {
-    const response = await axiosInstance.get(
+  getReactionsByCommentId(comment_id: string) {
+    return axiosInstance.get(
       `${END_POINTS_URL.ADD_REACTION}/${comment_id}/reactions`
     )
-    return response?.data
+  },
+  getUserById(id: number) {
+    return axiosInstance.get(`${END_POINTS_URL.GET_USER_BY_ID}${id}`)
   },
 }

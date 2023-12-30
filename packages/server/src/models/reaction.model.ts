@@ -1,13 +1,11 @@
 import { DataTypes, Model } from 'sequelize'
-
 import sequelize from '../db'
-import Comment from './comment.model'
 
 class Reaction extends Model {
-  id: number | undefined
-  comment_id: string | undefined
-  emoji: string | undefined
-  user_id: string | undefined
+  id?: number | undefined
+  comment_id?: string | undefined
+  emoji?: string | undefined
+  user_id?: string | undefined
 }
 
 Reaction.init(
@@ -19,32 +17,33 @@ Reaction.init(
     },
     emoji: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     comment_id: {
       type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: Comment,
-        key: 'id',
-      },
     },
   },
   {
+    sequelize,
     tableName: 'reaction',
     modelName: 'Reaction',
-    sequelize,
-    indexes: [
-      {
-        name: 'idx_commit_id',
-        fields: ['commit_id'],
-      },
-    ],
   }
 )
 
 export default Reaction
+
+// force - при каждом запуске создаст новую бд
+// alter - добавит если не было бд
+sequelize
+  .sync({ alter: true })
+  .then(() => {
+    // eslint-disable-next-line no-console
+    console.log('База данных готова к использованию')
+  })
+  .catch(err => {
+    console.error('Ошибка создания таблиц:', err)
+  })

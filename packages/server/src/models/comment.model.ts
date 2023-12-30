@@ -7,8 +7,10 @@ class Comment extends Model {
   id: number | undefined
   title: string | undefined
   comment: string | undefined
+  user_id?: string | undefined
   topic_id: number | undefined
   likes_count: number | undefined
+  reactions?: [] | undefined
 }
 
 Comment.init(
@@ -27,6 +29,14 @@ Comment.init(
     },
     likes_count: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    user_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    reactions: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
     },
     topic_id: {
@@ -51,14 +61,3 @@ Comment.init(
 )
 
 export default Comment
-// force - при каждом запуске создаст новую бд
-// alter - добавит если не было бд
-sequelize
-  .sync({ alter: true })
-  .then(() => {
-    // eslint-disable-next-line no-console
-    console.log('База данных готова к использованию')
-  })
-  .catch(err => {
-    console.error('Ошибка создания таблиц:', err)
-  })

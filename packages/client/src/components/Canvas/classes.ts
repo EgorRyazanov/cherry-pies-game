@@ -1,5 +1,11 @@
 import { Mouse, EnemyTypes, WaypointsType } from './interfaces'
-import { enemy_left, enemy_right, offsetCanvasRect } from './consts'
+import { offsetCanvasRect } from './consts'
+
+import imgEnemyLeft from '../../assets/game/enemy.png'
+import imgEnemyRight from '../../assets/game/enemy_scale.png'
+
+import imgEnemy from '../../assets/game/enemy.png'
+import imgTower from '../../assets/game/tower.png'
 
 export class Sprite {
   x: number
@@ -95,7 +101,7 @@ export class Enemy extends Sprite {
     context: CanvasRenderingContext2D | null,
     waypoints: WaypointsType[]
   ) {
-    super(x, y, context, 'src/assets/game/enemy.png', { max: 4 })
+    super(x, y, context, imgEnemy, { max: 4 })
     this.x = x
     this.y = y
     this.height = 30
@@ -149,9 +155,9 @@ export class Enemy extends Sprite {
         prevPostWay.post !== undefined &&
         prevPostWay.post.x < prevPostWay.prev.x
       ) {
-        super.updateSprite(enemy_left)
+        super.updateSprite(imgEnemyRight)
       } else {
-        super.updateSprite(enemy_right)
+        super.updateSprite(imgEnemyLeft)
       }
 
       const speed = 2
@@ -287,14 +293,7 @@ export class BuildTower extends Sprite {
   context: CanvasRenderingContext2D | null
 
   constructor(x: number, y: number, context: CanvasRenderingContext2D | null) {
-    super(
-      x,
-      y,
-      context,
-      'src/assets/game/tower.png',
-      { max: 6 },
-      { x: 0, y: -90 }
-    )
+    super(x, y, context, imgTower, { max: 6 }, { x: 0, y: -90 })
     this.x = x
     this.y = y
     this.center = {

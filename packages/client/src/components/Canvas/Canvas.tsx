@@ -1,6 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Enemy, TowerPlace, BuildTower } from './classes'
 import { BuildPlace, Mouse, TowerPlaceType } from './interfaces'
+import imgCoins from '../../assets/game/coins.svg'
+import imgHeart from '../../assets/game/heart.svg'
+import imgMap from '../../assets/game/map.png'
+
 import {
   heightCanvas,
   widthCanvas,
@@ -68,7 +72,7 @@ const Canvas: React.FC = () => {
     canvas.width = widthCanvas
 
     const img = new Image()
-    img.src = 'src/assets/game/map.png'
+    img.src = imgMap
     img.onload = () => {
       if (startNewGame) {
         updateAnimation()
@@ -252,11 +256,11 @@ const Canvas: React.FC = () => {
         <div>противников убито: {enemyDeadCounter}</div>
         <div className={s.way}>волна: {wayCounterIn}</div>
         <div className={s.coins}>
-          <img src="src/assets/game/coins.svg" alt="coins" />
+          <img src={imgCoins} alt="coins" />
           <span>{coins}</span>
         </div>
         <div className={s.heats}>
-          <img src="src/assets/game/heart.svg" alt="heart" />
+          <img src={imgHeart} alt="heart" />
           <span>{hearts}</span>
         </div>
       </div>

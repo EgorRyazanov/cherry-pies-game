@@ -36,16 +36,6 @@ services:
           - client
         networks:
           - default
-    certbot:
-      image: certbot/certbot
-      depends_on:
-        - server
-      container_name: certbot
-      volumes:
-        - etc-letsencrypt:/etc/letsencrypt
-        - www-html:/var/www/html
-      command: certonly --webroot --webroot-path=/var/www/html --mail test_mail@gmail.com --agree-tos --no-eff-email
-      --staging -d best_game_ever.ru
     postgres:
       image: postgres:14
       ports:

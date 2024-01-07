@@ -4,8 +4,9 @@ export const heightCanvas = 768
 export const widthCanvas = 1280
 export const offsetCanvasRect = 32
 
-export const enemy_right = 'src/assets/game/enemy.png'
-export const enemy_left = 'src/assets/game/enemy_scale.png'
+// export const enemy_right = 'src/assets/game/enemy.png'
+// export const enemy_right = '../assets/game/enemy.png'
+// export const enemy_left = 'src/assets/game/enemy_scale.png'
 
 export const towersPlace: TowerPlace[] = []
 export const buildingTower: BuildTower[] = []

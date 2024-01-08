@@ -32,6 +32,8 @@ jobs:
           file: Dockerfile.client
           push: true
           tags: ghcr.io/${{ env.OWNER_LC }}/${{ github.event.repository.name }}/client:${{ github.sha }}
+          args: | 
+            --build-arg NODE_VERSION=16
 
       - name: Build and push server image
         uses: docker/build-push-action@v2

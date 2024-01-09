@@ -32,7 +32,7 @@ export const ForumPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={`${styles.font_40} ${styles.forumTitle}`}>Форумы</h1>
+      <h1 className={`${styles.font_32} ${styles.forumTitle}`}>Форумы</h1>
       <ul className={styles.forumsContainer}>{forumsToRender}</ul>
       <FormLinkButton
         to="create"

@@ -8,14 +8,15 @@
 }
 
 .formLabel {
-  color: $common-white-text;
+  color: var(--text-color);
 }
 
 .formInput {
   border: none;
-  border-bottom: 1px solid $common-white-text;
+  border-bottom: 1px solid var(--text-color);
   padding: 0.5rem 1rem;
   width: 100%;
+  font-size: 16px;
 }
 
 .formInput:focus,
@@ -35,4 +36,5 @@
 
 .form-error-message {
   color: $red-alert;
+  font-size: 12px;
 }

@@ -2,7 +2,7 @@
 @import '../../style/fonts';
 
 .useFormInputBlockWrapper {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--primary-color);
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -11,7 +11,7 @@
 }
 
 .userFormLabel {
-  color: $common-black-text;
+  color: var(--alternative-text-color)
 }
 
 .userFormInputWrapper {
@@ -24,13 +24,13 @@
 .userFormInput {
   border: none;
   background: none;
-  color: $common-black-text;
+  color: var(--alternative-text-color);
   text-align: right;
   width: 100%;
 }
 
 .userFormInput::placeholder {
-  color: $common-black-text;
+  color: var(--alternative-text-color);
 }
 
 .userFormInput:focus,
@@ -40,9 +40,9 @@
 }
 
 .userFormInput:disabled {
-  color: $button-color;
+  color: var(--primary-color);
 }
 
 .userFormInput:disabled::placeholder {
-  color: $button-color;
+  color: var(--primary-color);
 }

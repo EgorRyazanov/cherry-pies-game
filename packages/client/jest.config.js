@@ -15,4 +15,5 @@ export default {
   transform: {
     '^.+\\.svg$': '<rootDir>/svgTransform.js',
   },
+  setupFilesAfterEnv: ['./jest.setup.js']
 }

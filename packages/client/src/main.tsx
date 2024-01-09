@@ -4,13 +4,16 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { store } from './store'
+import { ThemeWrapper } from './components/ThemeWrapper'
 
 ReactDOM.hydrateRoot(
   document.getElementById('root') as HTMLElement,
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeWrapper>
+          <App />
+        </ThemeWrapper>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

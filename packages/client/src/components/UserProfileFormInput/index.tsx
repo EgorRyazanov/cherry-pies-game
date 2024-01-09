@@ -55,7 +55,7 @@ export const UserProfileFormInput = ({
         <ErrorMessage
           component="p"
           name={name}
-          className={`form-error-message ${styles.font_8}`}
+          className="form-error-message"
         />
       </div>
     </div>

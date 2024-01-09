@@ -1,16 +1,9 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
-import App from './App'
 import { Provider } from 'react-redux'
 import { store } from './store'
-
-// const appContent = 'Вход'
-
-// @ts-ignore
-global.fetch = jest.fn(() =>
-  Promise.resolve({ json: () => Promise.resolve('hey') })
-)
+import App from './App'
 
 test('Example test', async () => {
   render(
@@ -20,5 +13,4 @@ test('Example test', async () => {
       </BrowserRouter>
     </Provider>
   )
-  // expect(screen.getByText(appContent)).toBeDefined()
 })

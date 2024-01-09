@@ -6,15 +6,25 @@
 }
 
 :root {
-  color: $common-black-text;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
 }
 
 body {
-  margin: 0;
+  --background-color: #faf6f6;
+  --text-color: #fff;
+  --alternative-text-color: #1e1e1e;
+  --primary-color: #8eaaf0;
 }
+
+
+body.dark {
+  --background-color: #2f2d2d;
+  --text-color: #1e1e1e;;
+  --alternative-text-color: #fff;
+  --primary-color: #8eaaf0;
+}
+
 
 ul {
   list-style: none;
@@ -34,10 +44,12 @@ a {
 }
 
 .form-button {
-  background-color: $button-color;
-  border: 1px solid $common-white-text;
+  background-color: var(--primary-color);
+  border-radius: $border-raduis;
+  border: none;
   box-shadow: 0 4px 4px 0 $shadow-color;
-  color: $common-white-text;
+  color: var(--text-color);
+  font-size: 18px;
   height: 2.5625rem;
   max-width: 21.25rem;
   width: 100%;
@@ -61,9 +73,7 @@ svg {
 }
 
 .page-wrapper {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,11 +84,11 @@ svg {
 }
 
 .page-background {
-  background-image: url('src/assets/pageBackground.jpg');
+  background-color: var(--background-color);
 }
 
 .error-page-background {
-  background-image: url('src/assets/errorPageBackground.jpg');
+  background-color: var(--background-color);
 }
 
 .form {
@@ -91,7 +101,7 @@ svg {
 }
 
 .link {
-  color: $link-button-text-color;
+  color: var(--text-color);
   text-decoration: none;
 
   &:hover {
@@ -128,19 +138,19 @@ svg {
 }
 
 .error-page-header {
-  color: $common-black-text;
+  color: var(--alternative-text-color);
   margin-bottom: 1.25rem;
 }
 
 .error-page-message {
-  color: $common-black-text;
+  color: var(--alternative-text-color);
   margin-top: 0;
   margin-bottom: 1.25rem;
 }
 
 .error-input,
 .error-input::placeholder {
-  color: red;
+  color: $red-alert;
 }
 
 .form-error-message {

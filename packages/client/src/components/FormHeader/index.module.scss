@@ -2,7 +2,7 @@
 @import '../../style/variables';
 
 .formHeader {
-  color: $common-white-text;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   justify-content: center;

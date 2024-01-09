@@ -1,13 +1,13 @@
 @import '../../style/variables';
 
-.link {
+.link, .link:visited {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--alternative-text-color);
   font-size: 20px;
 }
 
 .active {
   font-size: 20px;
-  color: $button-color;
+  color: var(--primary-color);
   text-decoration: underline;
 }

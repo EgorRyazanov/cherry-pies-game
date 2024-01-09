@@ -40,7 +40,6 @@ export const leaderBoardSlice = createSlice({
           state: TLeaderBoardSlice,
           action: PayloadAction<TLeaderBoardItem[]>
         ) => {
-          console.log(action.payload)
           state.isLoading = false
           state.data = action.payload
         }

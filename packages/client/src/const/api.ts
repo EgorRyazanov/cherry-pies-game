@@ -17,10 +17,17 @@ export enum END_POINTS_URL {
   CHANGE_USER_PROFILE_AVATAR = '/user/profile/avatar',
   LEADER_BOARD = '/leaderboard',
   LEADER_BOARD_ALL = '/leaderboard/all',
-  GET_FORUM_TOPICS = 'https://run.mocky.io/v3/47a20117-0a8b-41b0-88b0-9746cd2aab46',
+  GET_FORUM_TOPICS = 'http://localhost:3001/api/topic',
+  CREATE_FORUM_TOPIC = 'http://localhost:3001/api/topic',
+  GET_FORUM_BY_ID = 'http://localhost:3001/api/topic',
+  ADD_COMMENT = 'http://localhost:3001/api/comment',
+  GET_COMMENT_BY_ID = 'http://localhost:3001/api/comment',
+  ADD_REACTION = 'http://localhost:3001/api/comment',
+
+  /*   GET_FORUM_TOPICS = 'https://run.mocky.io/v3/47a20117-0a8b-41b0-88b0-9746cd2aab46',
   CREATE_FORUM_TOPIC = 'https://run.mocky.io/v3/6d920d59-d64e-49e6-92eb-31392e0ac054',
   GET_FORUM_BY_ID = 'https://run.mocky.io/v3/e70622de-fe06-48ac-9ae1-4fa3c1eff0ea',
-  ADD_COMMENT = 'https://run.mocky.io/v3/abd5be5b-ee68-4614-9d71-5dc5496aaef0',
+  ADD_COMMENT = 'https://run.mocky.io/v3/abd5be5b-ee68-4614-9d71-5dc5496aaef0', */
 }
 
 export enum API_ERROR_MESSAGES {

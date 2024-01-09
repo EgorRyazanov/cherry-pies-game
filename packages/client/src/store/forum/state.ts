@@ -1,6 +1,3 @@
-import { TUserData } from '../../api/types'
-import { MOCK_FORUMS_DETAILS } from '../../pages/Forum/mockForums'
-
 export type TForumListItem = {
   id: string
   title: string
@@ -14,10 +11,13 @@ export type TReaction = {
 
 export type TComment = {
   id: string
-  text: string
-  date: string
-  user: TUserData
+  title: string
+  comment: string
+  user_id: string
+  topic_id: string
+  likes_count: string
   reactions: TReaction[]
+  createdAt: string
 }
 
 export type TForum = {
@@ -35,7 +35,7 @@ export type TInitialState = {
   newForumDescription: string
   newComment: string
   forumList: TForumListItem[]
-  selectedForum: TForum | null
+  selectedForum: TForum
   forumDataList: TForum[]
 }
 
@@ -46,6 +46,12 @@ export const initialState: TInitialState = {
   newForumDescription: '',
   newComment: '',
   forumList: [],
-  forumDataList: MOCK_FORUMS_DETAILS,
-  selectedForum: null,
+  forumDataList: [],
+  selectedForum: {
+    id: '',
+    title: '',
+    description: '',
+    image: '',
+    comments: [],
+  },
 }

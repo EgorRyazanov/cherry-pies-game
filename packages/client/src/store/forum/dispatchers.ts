@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { RootState } from '../index'
-import { createForum } from './slice'
+import { addComment, addReaction, createForum } from './slice'
 import { forumApi } from '../../api/forumApi'
 import { TForum, TForumListItem, TReaction } from './state'
 import { TAddCommentData, TForumCreation } from '../../pages/Forum/types'
@@ -23,8 +23,9 @@ export const createTopicThunk = createAsyncThunk<
 >('forum/createTopicThunk', (data, { dispatch, rejectWithValue }) => {
   return forumApi
     .createTopic(data)
-    .then(() => {
-      dispatch(createForum(data))
+    .then(response => response.data)
+    .then(res => {
+      dispatch(createForum(res))
     })
     .catch(error => rejectWithValue(error))
 })
@@ -33,16 +34,10 @@ export const getForumByIdThunk = createAsyncThunk<
   TForum,
   string,
   { state: RootState; rejectValue: string }
->('forum/getForumByIdThunk', (id, { getState, rejectWithValue }) => {
+>('forum/getForumByIdThunk', (id, { rejectWithValue }) => {
   return forumApi
     .getForumById(id)
-    .then(() => {
-      // временное решение, т.к. не готова API форумов, решение делать на моковых серверах согласовано с ментором
-      // после ввода в строй нашего сервера, будут удалены следующие две строки и раскомментирована последняя строка
-      const forums = getState().forum.forumDataList
-      return forums.filter(forum => forum.id === id)[0]
-      // response response.data;
-    })
+    .then(response => response.data)
     .catch(error => rejectWithValue(error))
 })
 
@@ -50,25 +45,45 @@ export const addCommentThunk = createAsyncThunk<
   void,
   TAddCommentData,
   { rejectValue: string }
->('forum/addCommentThunk', (data, { rejectWithValue }) => {
+>('forum/addCommentThunk', (data, { dispatch, rejectWithValue }) => {
   return forumApi
     .addComment(data)
-    .then(response => console.log(response.data))
+    .then(response => response.data)
+    .then(res => {
+      dispatch(addComment(res))
+    })
     .catch(error => rejectWithValue(error))
 })
 
+export const getCommentsListThunk = createAsyncThunk(
+  'forum/getCommentsListThunk',
+  (id: string, { rejectWithValue }) => {
+    return forumApi
+      .getCommentsById(id)
+      .then(response => response.data)
+      .catch(error => rejectWithValue(error))
+  }
+)
+
+export const addReactionThunk = createAsyncThunk(
+  'forum/addReactionThunk',
+  (data: TReaction, { dispatch, rejectWithValue }) => {
+    return forumApi
+      .addReaction(data)
+      .then(response => response.data)
+      .then(res => {
+        dispatch(addReaction(res))
+      })
+      .catch(error => rejectWithValue(error))
+  }
+)
+
 export const fetchReactions = createAsyncThunk(
   'forum/reactionsByTopicId',
-  async (topic_id: number, thunkAPI) => {
-    try {
-      const response = (await forumApi.getReactionsByTopicId(
-        topic_id
-      )) as TReaction
-      return response
-    } catch (error) {
-      return thunkAPI.rejectWithValue({
-        error: (error as Error | null)?.message,
-      })
-    }
+  (comment_id: string, { rejectWithValue }) => {
+    return forumApi
+      .getReactionsByCommentId(comment_id)
+      .then(response => response.data)
+      .catch(error => rejectWithValue(error))
   }
 )

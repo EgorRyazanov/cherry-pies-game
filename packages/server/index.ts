@@ -8,6 +8,7 @@ import { createServer as createViteServer } from 'vite'
 import dotenv from 'dotenv'
 import express from 'express'
 import topicRouter from './src/router/topic.router'
+import reactionRouter from './src/router/reaction.router'
 
 dotenv.config()
 
@@ -19,6 +20,7 @@ async function startServer() {
   app.use(express.json())
   app.use('/api', topicRouter)
   app.use('/api', commentRouter)
+  app.use('/api', reactionRouter)
 
   app.use(cors())
   const port = Number(process.env.SERVER_PORT) || 3001

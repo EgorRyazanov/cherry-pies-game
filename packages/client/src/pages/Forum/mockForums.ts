@@ -1,5 +1,3 @@
-import { TForumDetails } from './types'
-
 export const MOCK_FORUMS = [
   {
     id: '1',
@@ -11,7 +9,7 @@ export const MOCK_FORUMS = [
   },
 ]
 
-export const MOCK_FORUMS_DETAILS: TForumDetails[] = [
+export const MOCK_FORUMS_DETAILS = [
   {
     id: '1',
     title: 'Новые игры',

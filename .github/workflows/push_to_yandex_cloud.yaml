@@ -25,7 +25,8 @@ jobs:
     steps:
       # Запускает предварительную проверку
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-
+      - uses: actions/checkout@v2
+      
       # Авторизация в Яндекс.Облаке (здесь ничего не меняем)
       - name: Yandex Cloud CR "Login" Action for GitHub Actions
         uses: yc-actions/yc-cr-login@v0.1-alpha

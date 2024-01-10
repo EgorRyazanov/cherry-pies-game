@@ -32,10 +32,10 @@ jobs:
         uses: yc-actions/yc-cr-login@v0.1-alpha
         with:
           yc-sa-json-credentials: '{
-             "id": "aje9tr9r3gkenpqbpeo0"
-             "service_account_id": "ajebicimfkvct6n6qo8q"
-             "created_at": "2024-01-10T09:40:04.093449700Z"
-             "key_algorithm": "RSA_2048"
+             "id": "aje9tr9r3gkenpqbpeo0",
+             "service_account_id": "ajebicimfkvct6n6qo8q",
+             "created_at": "2024-01-10T09:40:04.093449700Z",
+             "key_algorithm": "RSA_2048",
           }'
 
       # Построение образа и отправка его в Container Registry
